@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 This Coder Enterprise Environment
+  ul
+    li 
+      strong Environment Name: 
+      span #{env.CODER_ENVIRONMENT_NAME}
+    li 
+      strong Image URI: 
+      span #{env.CODER_IMAGE_URI}
+    li 
+      strong Max Memory: 
+      span #{env.CODER_MEMORY_LIMIT} GB
+    li 
+      strong Max CPU Cores: 
+      span #{env.CODER_CPU_LIMIT}
+    li 
+      strong Username: 
+      span #{env.CODER_USERNAME}
+    li 
+      strong Email: 
+      span #{env.CODER_USER_EMAIL} 
+      a(href="/send-notifications") (Send notifications)
