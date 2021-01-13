@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h1 Welcome to AcmeCorp, #{env.CODER_USERNAME} 🎉
+  h3 Let's get you all set up for development...
+  hr 
+  ol
+    li 
+      span Get your Slack invite:
+      | 
+      input(value=env.CODER_USER_EMAIL, disabled)
+      | 
+      button(type="submit", disabled="disable") Submit ✓
+    li 
+      span Join the GitHub organization (GitHub username):
+      | 
+      input(value="bpmct")
+      | 
+      button(type="submit", onclick="alert(\"Sent, check your email!\")") Join
+    li 
+      span Join the AcmeCorp BuildKite:
+      | 
+      input(value=env.CODER_USER_EMAIL)
+      | 
+      button(type="submit", onclick="alert(\"Sent, check your email!\")") Send invite
+    li
+      form(name="create-workspace", action="/actions/create_workspace", method="post")
+      span Create your first developer workspace:
+        | 
+        input(name="name", placeholder="Environment name", value=env.CODER_USERNAME+"-dev")
+        | 
+        button(type="submit") Create
+    li 
+      a(href="https://coder.com/docs", target="_blank") Read the AcmeCorp product docs
+    li
+      form(name="create-workspace", action="/actions/create_workspace", method="post")
+      span Create a secondary workspace for other projects:
+        | 
+        input(name="name", placeholder="Environment name")
+        | 
+        select(name="image")
+          each image, index in images
+            option= image.repository + ":" + image.default_tag.tag
+        | 
+        button(type="submit") Create
+    li
+        button(type="submit", onclick="alert(\"Not exactly functional!\")") Delete this onboarding workspace
+    
