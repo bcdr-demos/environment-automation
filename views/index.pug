@@ -24,10 +24,11 @@ block content
       span #{env.CODER_USER_EMAIL} 
       a(href="#", onclick="alert(\"You could hook this up with some internal API, idk\");") (Sign up for xyz)
     hr
+    input(placeholder="Environment name")
+    | 
     select
-      option(value="js") Javascript Development
-      option(value="go") Go Development
-      option(value="") Custom 
+      each image, index in images
+        option(value=image.id)= image.repository
     | 
     button(onclick="alert(\"This doesn't work, but it could work very easily by running another coder-cli script with exec(): \\n\\n$ coder envs create [name] --image [image]\")") Create new environment
     br
@@ -35,7 +36,7 @@ block content
     strong Run command on environent:
     | 
     select
-      each workspace, index in coder_envs
+      each workspace, index in workspaces
         option(value=workspace.id)= workspace.name
     | 
     button(onclick="alert(\"This doesn't work, but it could work very easily by running another coder-cli with exec(): \\n\\n$ coder sh env-name ping google.com\")") Execute

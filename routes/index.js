@@ -6,21 +6,29 @@ const { exec } = require("child_process");
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  // get list of Coder workspaces via coder-cli
-  exec("coder envs ls --output json", (error, stdout, stderr) => {
+  // get list of Coder workspaces and images via coder-cli
+  // output is JSON, so we put a |||| to split responses (hacky)
+  exec("coder images ls --output json && echo \"|||||\" && coder envs ls --output json", (error, stdout, stderr) => {
     if (error) {
-      res.render(`error: ${error.message}`);
+      console.error(`error: ${error.message}`);
       return;
     }
     if (stderr) {
-      res.render(`stderr: ${stderr}`);
+      console.error(`stderr: ${stderr}`);
       return;
     }
     // no errors, render the index page
-    let workspaces = JSON.parse(stdout)
+
+    // seperate responses by our "|||||"
+    let responses = stdout.split("|||||");
+
+    // parse the first block of JSON (images)
+    let images = JSON.parse(responses[0]);
+    // parse the second block of JSON (workspaces)
+    let workspaces = JSON.parse(responses[1]);
 
     // pass on the workspaces list and our environment variables
-    res.render('index', { workspaces, env: process.env });
+    res.render('index', { images, workspaces, env: process.env });
   });
 });
 
