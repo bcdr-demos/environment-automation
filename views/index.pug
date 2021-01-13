@@ -29,7 +29,7 @@ block content
       | 
       select(name="image")
         each image, index in images
-          option(value=image.name)= image.repository + ":" + image.default_tag.tag
+          option= image.repository + ":" + image.default_tag.tag
       | 
       button(type="submit") Create new environment
     br
