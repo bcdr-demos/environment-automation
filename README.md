@@ -8,6 +8,8 @@ An express app that uses built-in features from [Coder environments](https://cod
 
 This is just a simple express app with Pug view engine. Here's what's important to understand in this demo app:
 
+`bin/www` - express web server (nothing special to Coder)
+
 `app.js` - controls routes (nothing special to Coder)
 
 `routes/index.js` - uses env variables and coder-cli to get info about:
