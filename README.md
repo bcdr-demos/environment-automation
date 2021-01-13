@@ -30,3 +30,9 @@ However, the create/command exec functionality could work on any system with cod
 3. `npm install`
 4. To run the web app, `npm start`
 5. [If using Coder]: Open a [Dev URL](https://coder.com/docs/environments/devurls) on port 3000 to access the web app.
+
+---
+
+Contributions are welcome. 🙂 
+
+⚠️ We do not recommend using this app in production for your organization. This is just a demonstration of capabilities and is not secure.
