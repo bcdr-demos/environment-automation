@@ -28,7 +28,7 @@ block content
     | 
     select
       each image, index in images
-        option(value=image.id)= image.repository
+        option(value=image.id)= image.repository + ":" + image.default_tag.tag
     | 
     button(onclick="alert(\"This doesn't work, but it could work very easily by running another coder-cli script with exec(): \\n\\n$ coder envs create [name] --image [image]\")") Create new environment
     br
