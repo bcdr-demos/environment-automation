@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 This Coder Enterprise Environment
+  h1 Coder 1.14 Environments are Smart...
   ul
     li 
       strong Environment Name: 
@@ -15,10 +15,28 @@ block content
     li 
       strong Max CPU Cores: 
       span #{env.CODER_CPU_LIMIT}
+    hr
     li 
-      strong Username: 
+      strong Your username: 
       span #{env.CODER_USERNAME}
     li 
-      strong Email: 
+      strong Your email: 
       span #{env.CODER_USER_EMAIL} 
-      a(href="/send-notifications") (Send notifications)
+      a(href="#", onclick="alert(\"You could hook this up with some internal API, idk\");") (Sign up for xyz)
+    hr
+    select
+      option(value="js") Javascript Development
+      option(value="go") Go Development
+      option(value="") Custom 
+    | 
+    button(onclick="alert(\"This doesn't work, but it could work very easily by running another coder-cli script with exec(): \\n\\n$ coder envs create [name] --image [image]\")") Create new environment
+    br
+    br
+    strong Run command on environent:
+    | 
+    select
+      each workspace, index in coder_envs
+        option(value=workspace.id)= workspace.name
+    | 
+    button(onclick="alert(\"This doesn't work, but it could work very easily by running another coder-cli with exec(): \\n\\n$ coder sh env-name ping google.com\")") Execute
+
