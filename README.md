@@ -17,6 +17,8 @@ This is just a simple express app with Pug view engine. Here's what's important 
 - all Coder environments by the environment owner
 - all Coder images
 
+`routes/actions.js` - actually modifies stuff in a Coder deployment (create environment, run command, etc) 
+
 `views/index.pug` - renders the index page and displays the Coder info
 
 ## Getting started

@@ -24,13 +24,14 @@ block content
       span #{env.CODER_USER_EMAIL} 
       a(href="#", onclick="alert(\"You could hook this up with some internal API, idk\");") (Add to service)
     hr
-    input(placeholder="Environment name")
-    | 
-    select
-      each image, index in images
-        option(value=image.id)= image.repository + ":" + image.default_tag.tag
-    | 
-    button(onclick="alert(\"I haven't gotten around to this yet, but it could work very easily by running another coder-cli script with exec(): \\n\\n$ coder envs create [env-name] --image [image]\")") Create new environment
+    form(name="create-workspace", action="/actions/create_workspace", method="post")
+      input(name="name", placeholder="Environment name")
+      | 
+      select(name="image")
+        each image, index in images
+          option(value=image.name)= image.repository + ":" + image.default_tag.tag
+      | 
+      button(type="submit") Create new environment
     br
     br
     strong Run command on environent:
