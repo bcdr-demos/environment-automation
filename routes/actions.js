@@ -59,7 +59,6 @@ router.post('/create_workspace', async (req, res, next) => {
                 // let's redirect to the Coder screen now :)
                 res.redirect(`${coder_url}/environments?env=${this_env.id}`)
 
-                res.send("Attempting to redirect")
 
             });
 

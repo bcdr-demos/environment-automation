@@ -33,16 +33,16 @@ block content
     li 
       a(href="https://coder.com/docs", target="_blank") Read the AcmeCorp product docs
     li
-      form(name="create-workspace", action="/actions/create_workspace", method="post")
-      span Create a secondary workspace for other projects:
-        | 
-        input(name="name", placeholder="Environment name")
-        | 
-        select(name="image")
-          each image, index in images
-            option= image.repository + ":" + image.default_tag.tag
-        | 
-        button(type="submit") Create
+      form(name="create-workspace", action="/actions/create_workspace", method="post", target="_blank")
+        span Create a secondary workspace for other projects:
+          | 
+          input(name="name", placeholder="Environment name")
+          | 
+          select(name="image")
+            each image, index in images
+              option= image.repository + ":" + image.default_tag.tag
+          | 
+          button(type="submit") Create
     li
         button(type="submit", onclick="alert(\"Not exactly functional!\")") Delete this onboarding workspace
     
